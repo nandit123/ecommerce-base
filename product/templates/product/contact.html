@@ -1,0 +1,28 @@
+{% extends 'product/base.html' %}
+{% block body %}
+<div class="container">
+    <h1>Contact Us</h1>
+</div>
+<div class="container">
+    <form method="post" class="form-group">
+        {% csrf_token %}
+        {% for field in form %}
+          <div class="form-group">
+          <p>
+            <h5>{{field.label_tag}}</h5>
+            <div class="">{{field}}</div>
+            {% if field.help_text %}
+              <small style="display: none">{{field.help_text}}</small>
+            {% endif %}
+            {% for error in field.errors %}
+              <p style="color: red">{{error}}</p>
+            {% endfor %}
+          </p>
+          </div>
+        {% endfor %}
+        <div class="form-actions">
+          <button class="btn btn-success" type="submit">Send</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'product/base.html' %}
+{% block body %}
+    <!-- Page Content -->
+        <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-3"><br><br>
+          <div class="list-group">
+            <a href="/category" class="list-group-item">Bags</a>
+            <a href="/category" class="list-group-item">Lamshades</a>
+            <a href="/category" class="list-group-item">Wallets and Accessories</a>
+            <a href="/category" class="list-group-item">Fabrics</a>
+          </div>
+        </div>
+
+        <!-- /.col-lg-3 -->
+
+        <div class="col-lg-9">
+
+          <div class="card mt-4">
+            <img class="card-img-top img-fluid" src="{{product.product_photo.url}}" style="width: 450px; height: 350px;" alt="">
+            <div class="card-body">
+              <h3 class="card-title">{{product.name}}</h3>
+              <h4>${{product.price}}</h4>
+              <p class="card-text">{{product.description}}</p>
+              <p><strong>Style</strong>: Block-Printed Ajrak<br>
+              <strong>Material</strong>: Cotton Fabric, Faux Leather </p>
+              <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+              4.0 stars
+            </div>
+
+          </div>
+          <!-- /.card -->
+          <button type="button" class="btn btn-success" style="margin-right: 10px;">Buy Now</button><a href="/cart" type="button" class="btn btn-primary">Add to Cart</a>
+
+          <!-- /.card -->
+
+        </div>
+        <!-- /.col-lg-9 -->
+
+      </div>
+
+    </div>
+    <!-- /.container -->
+<br><br><br><br>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'product/base.html' %}
+
+{% block body %}
+<div class="container">
+    <h1>Register Here</h1>
+
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% include 'userprofile/form_template.html' %}
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </form>
+</div>
+<br><br><br><br>
+{% endblock %}

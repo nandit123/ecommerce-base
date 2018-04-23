@@ -1,0 +1,23 @@
+{% extends 'product/base.html' %}
+
+{% block body %}
+<div class="container" style="margin-top: 5%;">
+    <h1>You have logged out! See you soon</h1>
+</div>
+
+<div class="container" style="text-align: center; margin-top: 15%;  ">
+
+    <a href="/userprofile/login">
+        <button class="btn btn-success" style="padding: 20px 30px;">Login</button>
+    </a>
+    <a href="/userprofile/register">
+        <button class="btn btn-primary" style="padding: 20px 30px;">Register</button>
+    </a>
+
+    <a href="/">
+        <button class="btn btn-dark" style="padding: 20px 30px;">Home</button>
+    </a>
+
+</div>
+<br><br><br><br><br><br><br><br><br>
+{% endblock %}

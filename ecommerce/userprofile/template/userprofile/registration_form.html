@@ -1,0 +1,14 @@
+{% extends 'userprofile/base2.html' %}
+
+{% block body %}
+<h1>Register Here</h1>
+<div class="container">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% include 'userprofile/form_template.html' %}
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

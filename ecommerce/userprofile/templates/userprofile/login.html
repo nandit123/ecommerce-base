@@ -1,0 +1,31 @@
+<!-- check the default redirect page in settings.py file, you can change it there -->
+
+{% extends 'userprofile/base2.html' %}
+{% block body %}
+<div class="container">
+  <h2>Login Now</h2>
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <div class="form-group">
+      <p>
+        <h5>{{field.label_tag}}</h5>
+        <div class="">{{field}}</div>
+        {% if field.help_text %}
+          <small style="display: none">{{field.help_text}}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{error}}</p>
+        {% endfor %}
+      </p>
+      </div>
+    {% endfor %}
+      <button type="submit" class="btn btn-success">Login</button>
+  </form>
+</div>
+<br><br>
+<div class="container">
+    <p>New User?</p>
+    <a href="/userprofile/register"><button class="btn btn-primary">Register Here</button></a>
+</div>
+{% endblock %}

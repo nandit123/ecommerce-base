@@ -1,0 +1,46 @@
+{% extends 'userprofile/base.html' %}
+{% block body %}
+<br><br>
+{% if user.username != 'admin' %}
+<div class="container" style="background-color: lightgrey; padding-bottom:8%; padding-top: 3%;   margin-bottom: 2%;">
+{% endif %}
+{% if user.username == 'admin' %}
+<div class="container" style="background-color: lightgrey; padding-bottom:12%; padding-top: 3%;   margin-bottom: 2%;">
+{% endif %}
+    <img src="{{ user.profile.profile_picture.url }}" style="float: left; margin-right: 10%; width:300px; border-radius: 50%; border-style: ridge; border-width: 5px;">
+    <h6 style="color: blue">@{{ user }}</h6>
+    <h3><strong>{{ user.profile.name }}</strong></h3>
+    {% if user.username != 'admin' %}
+    <h5>Type: {{ user.profile.type }}</h5>
+    <h5>Skills: {{ user.profile.skills }}</h5>
+    {% endif %}
+    <br>
+    <a href="{% url 'userprofile:profile-update' user.profile.id %}">
+        <button class="btn btn-secondary">Update Profile</button>
+    </a>
+</div>
+{% if user.username != 'admin' %}
+<div style="width: 100%;">
+    <a href="{% url 'userprofile:student-project-add' %}" style="margin: 2% 0% 0% 5%;"><button class="btn btn-primary">Add Project</button></a>
+</div>
+{% endif %}
+<div class="container" style="">
+    {% for p in user.studentproject_set.all %}
+        <div class="container" style="background-color: #d4d97e;  margin: 1%; padding: 3%;">
+            <h4><strong>{{ p.title }} ( {{ p.lab }} Lab )</strong></h4><br>
+            <img src="{{ p.project_picture.url }}" style="width:200px; height: auto; float: left; margin-right: 2%;">
+            <h5>Mentored by <u>{{ p.mentor }}</u></h5>
+            <h5 style="color: brown;"><i>{{ p.domain }}</i></h5>
+            <h5>{{ p.description }}</h5>
+            <div style="width: 100%;">
+                <a href="{% url 'userprofile:student-project-update' p.id %}"><button type="submit" class="btn btn-secondary">Update</button></a>
+                <form action="{% url 'userprofile:student-project-delete' p.id %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="studentproject_id" value="{{ p.id }}"/>
+                    <button class="btn btn-light" type="submit">Delete</button>
+                </form>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
